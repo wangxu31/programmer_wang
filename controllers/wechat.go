@@ -16,7 +16,7 @@ type WeChatController struct {
 }
 
 func (c *WeChatController) Verify() {
-	//signature := c.GetString("signature")
+	signature := c.GetString("signature")
 	timestamp := c.GetString("timestamp")
 	nonce := c.GetString("nonce")
 	echostr := c.GetString("echostr")
@@ -28,6 +28,7 @@ func (c *WeChatController) Verify() {
 
 	resSha1 := sha1s(res)
 	log.Println("resSha1", resSha1)
+	log.Println("signature", signature)
 	log.Println("echostr", echostr)
 
 	c.Ctx.WriteString(echostr)
