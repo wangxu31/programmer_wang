@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"sort"
+	"log"
 )
 
 const TOKEN = "clive31"
@@ -20,5 +21,6 @@ func (c *WeChatController) Verify() {
 	data := []string{signature, timestamp, nonce, echostr, token}
 	sort.Strings(data)
 	c.Data["json"] = echostr
+	log.Println(echostr)
 	c.ServeJSON()
 }
