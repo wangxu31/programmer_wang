@@ -22,5 +22,6 @@ func (c *WeChatController) Verify() {
 	sort.Strings(data)
 	c.Data["json"] = echostr
 	log.Println(echostr)
-	c.ServeJSON()
+	//c.ServeJSON()
+	c.Ctx.WriteString(echostr)
 }
