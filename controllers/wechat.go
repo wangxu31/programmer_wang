@@ -3,7 +3,10 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"sort"
+	"strings"
 	"log"
+	"crypto/sha1"
+	"encoding/hex"
 )
 
 const TOKEN = "clive31"
@@ -13,15 +16,24 @@ type WeChatController struct {
 }
 
 func (c *WeChatController) Verify() {
-	signature := c.GetString("signature")
+	//signature := c.GetString("signature")
 	timestamp := c.GetString("timestamp")
 	nonce := c.GetString("nonce")
 	echostr := c.GetString("echostr")
 	token := TOKEN
-	data := []string{signature, timestamp, nonce, echostr, token}
+	data := []string{timestamp, nonce, token}
 	sort.Strings(data)
-	c.Data["json"] = echostr
-	log.Println(echostr)
-	//c.ServeJSON()
+
+	res := strings.Join(data, "")
+
+	resSha1 := sha1s(res)
+	log.Println("resSha1", resSha1)
+	log.Println("echostr", echostr)
+
 	c.Ctx.WriteString(echostr)
+}
+
+func sha1s(s string) string {
+	r := sha1.Sum([]byte(s))
+	return hex.EncodeToString(r[:])
 }
