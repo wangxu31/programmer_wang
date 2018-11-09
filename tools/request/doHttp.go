@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"log"
 	"io/ioutil"
+	"github.com/influxdata/platform/kit/errors"
 )
 
 func DoHttpGet(url string) (accessToken string, err error) {
