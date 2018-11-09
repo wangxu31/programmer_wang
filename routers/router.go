@@ -7,5 +7,5 @@ import (
 
 func init() {
     beego.Router("/", &controllers.MainController{})
-    beego.Router("/wx", &controllers.WeChatController{}, "get:Verify")
+    beego.Router("/wx", &controllers.WeChatController{}, "get:Verify;post:Answer")
 }
