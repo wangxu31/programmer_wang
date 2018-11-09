@@ -52,9 +52,9 @@ func (c *WeChatController) Verify() {
 }
 
 func (c *WeChatController) Answer() {
-	log.Println(c.GetString("MsgType"))
-	log.Println(c.GetString("Content"))
-	log.Println(c.GetString("MsgId"))
+	log.Println(c.Ctx.Input.RequestBody)
+	log.Println(string(c.Ctx.Input.RequestBody))
+	c.Ctx.WriteString(string(c.Ctx.Input.RequestBody))
 }
 
 func sha1s(s string) string {
