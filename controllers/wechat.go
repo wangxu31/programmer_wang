@@ -74,7 +74,7 @@ func (c *WeChatController) Answer() {
 	//c.Ctx.WriteString(info.Content)
 	//c.Ctx.WriteString(string(c.Ctx.Input.RequestBody))
 
-	x := passive_response.TextInfo{}
+	x := new(passive_response.TextInfo)
 	x.FromUserName = (*info).ToUserName
 	x.ToUserName = (*info).FromUserName
 	x.CreateTime = string(time.Now().Unix())
