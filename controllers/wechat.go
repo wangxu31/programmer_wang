@@ -69,6 +69,7 @@ func (c *WeChatController) Answer() {
 //</xml>
 //	`
 	info, _ := passive_response.DecodeTextInfo(data, &passive_response.TextInfo{})
+	log.Println("here is info")
 	log.Println(info)
 	//c.Ctx.WriteString(info.Content)
 	//c.Ctx.WriteString(string(c.Ctx.Input.RequestBody))

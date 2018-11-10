@@ -32,6 +32,6 @@ func DecodeTextInfo(xmlString string, info *TextInfo) (*TextInfo, error) {
 		log.Printf("error: %v", err)
 		return nil, err
 	}
-	log.Println(info)
+	//log.Println(info)
 	return info, nil
 }
