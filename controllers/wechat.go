@@ -71,7 +71,7 @@ func (c *WeChatController) Answer() {
 	log.Println(info)
 	//c.Ctx.WriteString(info.Content)
 	//c.Ctx.WriteString(string(c.Ctx.Input.RequestBody))
-	c.Data["json"] = "success"
+	c.Data["xml"] = "success"
 	c.ServeXML()
 }
 
