@@ -69,8 +69,10 @@ func (c *WeChatController) Answer() {
 //	`
 	info, _ := passive_response.DecodeTextInfo(data, &passive_response.TextInfo{})
 	log.Println(info)
-	c.Ctx.WriteString(info.Content)
+	//c.Ctx.WriteString(info.Content)
 	//c.Ctx.WriteString(string(c.Ctx.Input.RequestBody))
+	c.Data["json"] = "success"
+	c.ServeXML()
 }
 
 func sha1s(s string) string {
