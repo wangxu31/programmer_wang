@@ -75,11 +75,11 @@ func (c *WeChatController) Answer() {
 	//c.Ctx.WriteString(string(c.Ctx.Input.RequestBody))
 
 	x := passive_response.TextInfo{}
-	x.FromUserName = info.ToUserName
-	x.ToUserName = info.FromUserName
+	x.FromUserName = (*info).ToUserName
+	x.ToUserName = (*info).FromUserName
 	x.CreateTime = string(time.Now().Unix())
 	x.MsgType = "text"
-	x.Content = fmt.Sprintf("hello %s", info.FromUserName)
+	x.Content = fmt.Sprintf("hello %s", (*info).FromUserName)
 	c.Data["xml"] = &x
 
 	c.ServeXML()
